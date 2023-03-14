@@ -10,16 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 //@SpringBootApplication
 //@SpringBootApplication is a comprise of together 3 annotations namely @EnableAutoConfiguration,@ComponentScan,@Configuration
-@ComponentScan(basePackages = "com.vinay")
-@EnableAutoConfiguration
-@Configuration
+@SpringBootApplication
 @RestController
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class,args);
     }
 @GetMapping("/greet")
-    public String greet(){
-     return "Hello";
+    public GreetResponse greet(){
+     return new GreetResponse("Hello");
  }
+ record GreetResponse(String greet){}
 }
